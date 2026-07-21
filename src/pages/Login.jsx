@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { FaEnvelope, FaLock } from 'react-icons/fa'
-import LoginModal from '../components/LoginModal/LoginModal'
 import LOGO from '../assets/img/LOGO1.jpeg'
 
 const images = import.meta.glob('/src/assets/img/*.{jpeg,jpg,png,webp}', { eager: true })
-  const imageFiles = Object.entries(images)
-    .filter(([path]) => !path.includes('LOGO1'))
-    .map(([, mod]) => mod.default)
+const imageFiles = Object.entries(images)
+  .filter(([path]) => !path.includes('LOGO1'))
+  .map(([, mod]) => mod.default)
 
 const quotes = [
   { text: 'A emoção do sertanejo em cada apresentação.', author: 'A Princesinha do Modão' },
@@ -139,8 +138,6 @@ export default function Login() {
           </p>
         </motion.div>
       </div>
-
-      <LoginModal isOpen={false} onClose={() => {}} />
     </div>
   )
 }

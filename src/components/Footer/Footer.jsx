@@ -1,17 +1,18 @@
 import { motion } from 'framer-motion'
-import { FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaPhone } from 'react-icons/fa'
+import { FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaPhone, FaHeart } from 'react-icons/fa'
+
+const quickLinks = [
+  { href: '#home', label: 'Home' },
+  { href: '#sobre', label: 'Sobre' },
+  { href: '#agenda', label: 'Agenda' },
+  { href: '#momentos', label: 'Momentos' },
+  { href: '#galeria', label: 'Galeria' },
+  { href: '#musicas', label: 'Músicas' },
+  { href: '#contato', label: 'Contato' },
+]
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
-
-  const quickLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#sobre', label: 'Sobre' },
-    { href: '#agenda', label: 'Agenda' },
-    { href: '#galeria', label: 'Galeria' },
-    { href: '#musicas', label: 'Músicas' },
-    { href: '#contato', label: 'Contato' },
-  ]
 
   return (
     <footer className="relative border-t border-white/10 bg-dark">
@@ -25,7 +26,7 @@ export default function Footer() {
               A Princesinha do Modão
             </p>
             <p className="text-gray-400 leading-relaxed max-w-md">
-              Conhecida por levar a emoção do sertanejo a cada apresentação. 
+              Conhecida por levar a emoção do sertanejo a cada apresentação.
               Natural de Piracicaba, conquistando o Brasil com voz e carisma.
             </p>
           </div>
@@ -37,8 +38,9 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-gold transition-colors duration-300"
+                    className="text-gray-400 hover:text-gold transition-colors duration-300 flex items-center gap-2"
                   >
+                    <span className="w-1 h-1 rounded-full bg-gold/50" />
                     {link.label}
                   </a>
                 </li>
@@ -53,18 +55,18 @@ export default function Footer() {
                 href="https://www.instagram.com/manudiasoficial1/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-gray-400 hover:text-gold transition-colors duration-300"
+                className="flex items-center gap-3 text-gray-400 hover:text-gold transition-colors duration-300 group"
               >
-                <FaInstagram size={20} />
+                <FaInstagram size={20} className="group-hover:scale-110 transition-transform" />
                 <span>@manudiasoficial1</span>
               </a>
               <a
                 href="https://api.whatsapp.com/message/ECULPKJI3KMFF1?autoload=1&app_absent=0&utm_source=ig"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-gray-400 hover:text-gold transition-colors duration-300"
+                className="flex items-center gap-3 text-gray-400 hover:text-gold transition-colors duration-300 group"
               >
-                <FaWhatsapp size={20} />
+                <FaWhatsapp size={20} className="group-hover:scale-110 transition-transform" />
                 <span>WhatsApp</span>
               </a>
             </div>
@@ -72,11 +74,11 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm">
-            Manu Dias. Todos os direitos reservados.
+          <p className="text-gray-500 text-sm flex items-center gap-1">
+            Feito com <FaHeart className="text-gold text-xs" /> para Manu Dias
           </p>
           <p className="text-gray-500 text-sm">
-            © {currentYear}
+            © {currentYear} Manu Dias. Todos os direitos reservados.
           </p>
         </div>
       </div>

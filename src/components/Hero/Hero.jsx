@@ -1,25 +1,39 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { FaInstagram, FaWhatsapp, FaChevronDown } from 'react-icons/fa'
+import Particles from '../Particles/Particles'
+import StageLights from '../StageLights/StageLights'
 import HERO_IMG from '../../assets/img/FOTO1.jpeg'
 
 export default function Hero() {
+  const ref = useRef(null)
+  const { scrollY } = useScroll()
+  const y = useTransform(scrollY, [0, 800], [0, -150])
+  const opacity = useTransform(scrollY, [0, 600], [1, 0])
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/40 to-dark z-10" />
-        <motion.img
-          src={HERO_IMG}
-          alt="Manu Dias"
-          className="w-full h-full object-cover object-top"
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: 'easeOut' }}
-        />
+        <motion.div style={{ y, opacity }} className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/40 to-dark z-10" />
+          <motion.img
+            src={HERO_IMG}
+            alt="Manu Dias"
+            className="w-full h-full object-cover object-top scale-110"
+            animate={{ scale: 1 }}
+            transition={{ duration: 2, ease: 'easeOut' }}
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-r from-dark/80 via-dark/40 to-transparent z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-dark/50 z-10" />
+        <StageLights />
+        <Particles />
       </div>
 
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+      <motion.div
+        className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32"
+        style={{ opacity }}
+      >
         <div className="max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -66,27 +80,31 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.9 }}
             className="flex flex-wrap gap-4"
           >
-            <a
+            <motion.a
               href="https://api.whatsapp.com/message/ECULPKJI3KMFF1?autoload=1&app_absent=0&utm_source=ig"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 rounded-full bg-gradient-to-r from-yellow-600 to-gold text-dark font-bold text-lg hover:shadow-2xl hover:shadow-gold/30 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 rounded-full bg-gradient-to-r from-yellow-600 to-gold text-dark font-bold text-lg shadow-2xl shadow-gold/30 transition-all flex items-center gap-2"
             >
               <FaWhatsapp />
               Contratar Show
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="https://www.instagram.com/manudiasoficial1/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 rounded-full glass font-bold text-lg hover:bg-white/10 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 rounded-full glass font-bold text-lg hover:bg-white/10 transition-all flex items-center gap-2"
             >
               <FaInstagram />
               Instagram
-            </a>
+            </motion.a>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
