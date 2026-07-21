@@ -5,11 +5,9 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    cursor: none;
   }
   body {
     @apply bg-dark text-white font-sans antialiased;
-    cursor: none;
   }
 }
 

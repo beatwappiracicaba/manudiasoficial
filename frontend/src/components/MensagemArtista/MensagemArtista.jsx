@@ -24,6 +24,7 @@ export default function MensagemArtista() {
               <img
                 src={LOGO}
                 alt="Manu Dias"
+                loading="lazy"
                 className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />

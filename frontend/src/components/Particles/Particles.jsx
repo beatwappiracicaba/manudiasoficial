@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 export default function Particles() {
   const particles = useMemo(() =>
-    Array.from({ length: 50 }).map((_, i) => ({
+    Array.from({ length: 20 }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
       size: Math.random() * 3 + 1,

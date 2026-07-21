@@ -25,6 +25,7 @@ export default function Contratacoes() {
               <img
                 src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop"
                 alt="Show ao vivo"
+                loading="lazy"
                 className="w-full h-[400px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />

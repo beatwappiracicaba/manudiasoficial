@@ -19,6 +19,7 @@ export default function Hero() {
           <motion.img
             src={HERO_IMG}
             alt="Manu Dias"
+            fetchPriority="high"
             className="w-full h-full object-cover object-top scale-110"
             animate={{ scale: 1 }}
             transition={{ duration: 2, ease: 'easeOut' }}

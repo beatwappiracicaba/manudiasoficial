@@ -29,7 +29,7 @@ export default function Sobre() {
             className="relative"
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10">
-              <img src={SOBRE_IMG} alt="Manu Dias" className="w-full h-auto object-cover" />
+              <img src={SOBRE_IMG} alt="Manu Dias" loading="lazy" className="w-full h-auto object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />
             </div>
             <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full bg-gold/10 blur-3xl" />

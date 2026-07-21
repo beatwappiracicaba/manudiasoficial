@@ -6,7 +6,7 @@ export default function LoadingScreen() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000)
+    const timer = setTimeout(() => setLoading(false), 1500)
     return () => clearTimeout(timer)
   }, [])
 
@@ -16,37 +16,24 @@ export default function LoadingScreen() {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-[300] bg-dark flex items-center justify-center"
+      transition={{ duration: 0.4 }}
+      className="fixed inset-0 z-[300] flex items-center justify-center bg-dark"
     >
-      <div className="relative w-24 h-24">
+      <div className="relative w-12 h-12">
         <motion.div
           animate={{ rotate: 360 }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
           className="absolute inset-0 rounded-full border-2 border-transparent border-t-gold border-r-gold/30"
         />
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-          className="absolute inset-2 rounded-full border border-transparent border-b-gold/50 border-l-gold/10"
-        />
         <motion.img
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
           src={LOGO}
           alt="Logo"
-          className="absolute inset-0 m-auto w-12 h-12 rounded-full object-cover"
+          className="absolute inset-0 m-auto w-6 h-6 rounded-full object-cover"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.3 }}
         />
       </div>
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-        className="absolute mt-32 text-gold font-medium tracking-widest text-sm uppercase"
-      >
-        Carregando...
-      </motion.p>
     </motion.div>
   )
 }
