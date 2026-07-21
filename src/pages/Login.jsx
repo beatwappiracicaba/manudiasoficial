@@ -27,9 +27,7 @@ export default function Login() {
     return () => clearInterval(timer)
   }, [])
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
+  const handleLogin = () => {
     try {
       localStorage.setItem('manusite_demo_auth', 'true')
     } catch {}
@@ -99,7 +97,7 @@ export default function Login() {
             <p className="text-gray-400 text-sm uppercase tracking-[0.3em]">Área do artista</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="glass-card p-8 sm:p-10 space-y-6">
+          <div className="glass-card p-8 sm:p-10 space-y-6">
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
               <div className="relative">
@@ -127,7 +125,8 @@ export default function Login() {
             </div>
 
             <button
-              type="submit"
+              type="button"
+              onClick={handleLogin}
               className="w-full py-4 rounded-xl bg-gradient-to-r from-yellow-600 to-gold text-dark font-bold text-lg hover:shadow-2xl hover:shadow-gold/20 transition-all duration-300 hover:scale-[1.02]"
             >
               Entrar
@@ -136,7 +135,7 @@ export default function Login() {
             <p className="text-gray-500 text-xs text-center">
               Ainda não tem conta? Entre em contato com a produção.
             </p>
-          </form>
+          </div>
 
           <p className="text-center mt-6">
             <a href="/" className="text-gray-400 hover:text-gold transition-colors text-sm">
