@@ -3,16 +3,15 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Reveal from '../Reveal/Reveal'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 
-const defaultFaqs = [
+const faqs = [
   { question: 'Como contratar um show da Manu Dias?', answer: 'Entre em contato pelo WhatsApp oficial, informe a data, local e tipo de evento. Nossa equipe retornará com disponibilidade e valores.' },
   { question: 'Quais tipos de eventos são atendidos?', answer: 'Shows em festas, casamentos, eventos corporativos, festivais e apresentações em todo o Brasil.' },
   { question: 'O repertório pode ser personalizado?', answer: 'Sim! Montamos um repertório exclusivo para cada evento, combinando modão, universitário, raiz e clássicos.' },
   { question: 'Quanto tempo de antecedência devo reservar?', answer: 'Recomendamos contato com pelo menos 30 dias de antecedência para garantir a melhor data.' },
 ]
 
-export default function FAQ({ items }) {
+export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null)
-  const faqs = items && items.length > 0 ? items : defaultFaqs
 
   return (
     <section id="faq" className="py-24 relative">

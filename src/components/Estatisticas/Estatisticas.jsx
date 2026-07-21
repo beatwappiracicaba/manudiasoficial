@@ -1,16 +1,14 @@
 import Reveal from '../Reveal/Reveal'
 import useCounters from '../../hooks/useCounters'
 
-const defaultStats = [
+const stats = [
   { value: 150, label: 'Shows realizados', suffix: '+' },
   { value: 50, label: 'Cidades visitadas', suffix: '+' },
   { value: 120, label: 'Seguidores', suffix: 'K' },
   { value: 10, label: 'Anos de carreira', suffix: '' },
 ]
 
-export default function Estatisticas({ stats }) {
-  const data = stats && stats.length > 0 ? stats : defaultStats
-
+export default function Estatisticas() {
   return (
     <section id="estatisticas" className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-dark via-dark-card to-dark" />
@@ -26,8 +24,8 @@ export default function Estatisticas({ stats }) {
         </Reveal>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {data.map((stat, index) => (
-            <StatCard key={stat.label || index} stat={stat} index={index} />
+          {stats.map((stat, index) => (
+            <StatCard key={stat.label} stat={stat} index={index} />
           ))}
         </div>
       </div>

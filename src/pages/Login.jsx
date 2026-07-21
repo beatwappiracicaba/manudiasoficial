@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaEnvelope, FaLock } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
 import LOGO from '../assets/img/LOGO1.jpeg'
 
-  const quotes = [
+const images = import.meta.glob('/src/assets/img/*.{jpeg,jpg,png,webp}', { eager: true })
+const imageFiles = Object.entries(images)
+  .filter(([path]) => !path.includes('LOGO1'))
+  .map(([, mod]) => mod.default)
+
+const quotes = [
   { text: 'A emoção do sertanejo em cada apresentação.', author: 'A Princesinha do Modão' },
   { text: 'Natural de Piracicaba, levando arte por onde passa.', author: 'Trajetória' },
   { text: 'Voz marcante, carisma e muito sentimento.', author: 'Manu Dias' },
@@ -13,7 +17,6 @@ import LOGO from '../assets/img/LOGO1.jpeg'
 
 export default function Login() {
   const [activeQuote, setActiveQuote] = useState(0)
-  const navigate = useNavigate()
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -22,41 +25,51 @@ export default function Login() {
     return () => clearInterval(timer)
   }, [])
 
-  const handleLogin = () => {
-    try {
-      localStorage.setItem('manusite_demo_auth', 'true')
-    } catch {}
-    navigate('/dashboard')
+  const handleSubmit = (e) => {
+    e.preventDefault()
   }
 
   return (
     <div className="min-h-screen bg-dark flex flex-col md:flex-row overflow-hidden">
       <div className="hidden md:flex w-1/2 relative items-center justify-center p-10">
-        <div className="relative w-full max-w-lg aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10">
-          <img
-            src={`${import.meta.env.BASE_URL}assets/img/FOTO2.jpeg`}
-            alt="Manu Dias"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-dark/60 to-transparent" />
-          <div className="absolute bottom-8 left-8 right-8">
-            <motion.div
-              key={activeQuote}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.5 }}
-            >
-              <p className="text-white text-xl sm:text-2xl font-light leading-snug mb-3">
-                &ldquo;{quotes[activeQuote].text}&rdquo;
-              </p>
-              <span className="text-gold text-sm uppercase tracking-widest">
-                {quotes[activeQuote].author}
-              </span>
-            </motion.div>
+        {imageFiles.length > 0 && (
+          <div className="relative w-full max-w-lg aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={imageFiles[activeQuote % imageFiles.length]}
+                src={imageFiles[activeQuote % imageFiles.length]}
+                alt="Manu Dias"
+                className="absolute inset-0 w-full h-full object-cover"
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.7 }}
+              />
+            </AnimatePresence>
+
+            <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-dark/60 to-transparent" />
+
+            <div className="absolute bottom-8 left-8 right-8">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeQuote}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <p className="text-white text-xl sm:text-2xl font-light leading-snug mb-3">
+                    &ldquo;{quotes[activeQuote].text}&rdquo;
+                  </p>
+                  <span className="text-gold text-sm uppercase tracking-widest">
+                    {quotes[activeQuote].author}
+                  </span>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <div className="w-full md:w-1/2 flex items-center justify-center p-6 sm:p-10 relative">
@@ -79,7 +92,7 @@ export default function Login() {
             <p className="text-gray-400 text-sm uppercase tracking-[0.3em]">Área do artista</p>
           </div>
 
-          <div className="glass-card p-8 sm:p-10 space-y-6">
+          <form onSubmit={handleSubmit} className="glass-card p-8 sm:p-10 space-y-6">
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
               <div className="relative">
@@ -107,8 +120,7 @@ export default function Login() {
             </div>
 
             <button
-              type="button"
-              onClick={handleLogin}
+              type="submit"
               className="w-full py-4 rounded-xl bg-gradient-to-r from-yellow-600 to-gold text-dark font-bold text-lg hover:shadow-2xl hover:shadow-gold/20 transition-all duration-300 hover:scale-[1.02]"
             >
               Entrar
@@ -117,7 +129,7 @@ export default function Login() {
             <p className="text-gray-500 text-xs text-center">
               Ainda não tem conta? Entre em contato com a produção.
             </p>
-          </div>
+          </form>
 
           <p className="text-center mt-6">
             <a href="/" className="text-gray-400 hover:text-gold transition-colors text-sm">

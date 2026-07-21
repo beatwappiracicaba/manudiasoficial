@@ -1,11 +1,7 @@
 import { motion } from 'framer-motion'
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa'
 
-export default function Contato({ whatsapp, instagram, email, address }) {
-  const wa = whatsapp || '5511999999999'
-  const ig = instagram || 'manudiasoficial1'
-  const mail = email || 'contato@manudiasoficial.com.br'
-
+export default function Contato() {
   return (
     <section id="contato" className="py-24 relative">
       <div className="absolute inset-0 bg-dark" />
@@ -27,7 +23,7 @@ export default function Contato({ whatsapp, instagram, email, address }) {
 
         <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
           <motion.a
-            href={`https://www.instagram.com/${ig}`}
+            href="https://www.instagram.com/manudiasoficial1/"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, y: 30 }}
@@ -41,14 +37,14 @@ export default function Contato({ whatsapp, instagram, email, address }) {
               <FaInstagram className="text-white text-2xl" />
             </div>
             <h3 className="text-xl font-bold mb-2">Instagram</h3>
-            <p className="text-gray-400 mb-4">@{ig}</p>
+            <p className="text-gray-400 mb-4">@manudiasoficial1</p>
             <span className="inline-flex items-center gap-2 text-gold text-sm font-medium group-hover:gap-3 transition-all">
               Seguir <FaInstagram />
             </span>
           </motion.a>
 
           <motion.a
-            href={`https://api.whatsapp.com/message/${wa}`}
+            href="https://api.whatsapp.com/message/ECULPKJI3KMFF1?autoload=1&app_absent=0&utm_source=ig"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, y: 30 }}
@@ -78,7 +74,7 @@ export default function Contato({ whatsapp, instagram, email, address }) {
         >
           <h3 className="text-2xl font-bold mb-4 text-gold">Contratações de shows</h3>
           <p className="text-gray-300 text-lg">
-            {address || 'Entre em contato com nossa produção.'}
+            Entre em contato com nossa produção.
           </p>
           <p className="text-gray-400 mt-3">
             Solicite orçamentos, disponibilidade de agenda e mais informações.

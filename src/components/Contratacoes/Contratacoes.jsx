@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import Reveal from '../Reveal/Reveal'
 import { FaWhatsapp } from 'react-icons/fa'
 
-export default function Contratacoes({ title, description, whatsapp, image }) {
+export default function Contratacoes() {
   return (
     <section id="contratacoes" className="py-24 relative">
       <div className="absolute inset-0 bg-dark" />
@@ -23,7 +23,7 @@ export default function Contratacoes({ title, description, whatsapp, image }) {
           <Reveal>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10">
               <img
-                src={image || "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop"}
+                src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop"
                 alt="Show ao vivo"
                 loading="lazy"
                 className="w-full h-[400px] object-cover"
@@ -34,13 +34,14 @@ export default function Contratacoes({ title, description, whatsapp, image }) {
 
           <Reveal>
             <div className="space-y-6">
-              <h3 className="text-3xl font-bold text-gold">{title || 'Leve a emoção do sertanejo para seu evento'}</h3>
+              <h3 className="text-3xl font-bold text-gold">Leve a emoção do sertanejo para seu evento</h3>
               <p className="text-gray-300 text-lg leading-relaxed">
-                {description || 'Manu Dias traz voz marcante, carisma e muito sentimento para shows inesquecíveis. Solicite orçamentos e disponibilidade de agenda.'}
+                Manu Dias traz voz marcante, carisma e muito sentimento para shows inesquecíveis.
+                Solicite orçamentos e disponibilidade de agenda.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
                 <motion.a
-                  href={`https://api.whatsapp.com/message/${whatsapp || ''}`}
+                  href="https://api.whatsapp.com/message/ECULPKJI3KMFF1?autoload=1&app_absent=0&utm_source=ig"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}

@@ -3,33 +3,41 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FaTimes, FaChevronLeft, FaChevronRight, FaExpand, FaCompress, FaSearchPlus, FaSearchMinus } from 'react-icons/fa'
 import Reveal from '../Reveal/Reveal'
 
-const defaultFilters = [
+const images = import.meta.glob('/src/assets/img/*.{jpeg,jpg,png,webp}', { eager: true })
+
+function getImageUrls() {
+  return Object.entries(images)
+    .filter(([path]) => !path.includes('LOGO1'))
+    .map(([, mod]) => mod.default)
+}
+
+const filtros = [
   { label: 'Todas', filter: () => true },
-  { label: 'Shows', filter: (url) => url.includes('FOTO1') || url.includes('FOTO4') || url.includes('show') },
-  { label: 'Ensaio', filter: (url) => url.includes('FOTO2') || url.includes('FOTO3') || url.includes('backstage') || url.includes('ensaio') },
+  { label: 'Shows', filter: (url) => url.includes('FOTO1') || url.includes('FOTO4') },
+  { label: 'Ensaio', filter: (url) => url.includes('FOTO2') || url.includes('FOTO3') },
 ]
 
-export default function Galeria({ photos, filters }) {
+export default function Galeria() {
+  const [imageUrls, setImageUrls] = useState([])
   const [filtered, setFiltered] = useState([])
-  const [filter, setFilter] = useState(filters && filters.length > 0 ? filters[0] : { label: 'Todas', filter: () => true })
+  const [filter, setFilter] = useState(filtros[0])
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [zoom, setZoom] = useState(1)
   const touchStartRef = useRef({ x: 0, y: 0 })
 
-  const images = photos && photos.length > 0 ? photos.map(p => p.src).filter(Boolean) : []
-  const activeFilters = filters && filters.length > 0 ? filters : defaultFilters
+  useEffect(() => {
+    const urls = getImageUrls()
+    setImageUrls(urls)
+    setFiltered(urls)
+  }, [])
 
   useEffect(() => {
-    if (activeFilters.length > 0) {
-      setFilter(activeFilters[0])
+    if (filter) {
+      setFiltered(imageUrls.filter(filter.filter))
     }
-  }, [activeFilters])
-
-  useEffect(() => {
-    setFiltered(images.filter(filter.filter))
-  }, [filter, images])
+  }, [filter, imageUrls])
 
   const openLightbox = useCallback((index) => {
     setCurrentIndex(index)
@@ -93,12 +101,12 @@ export default function Galeria({ photos, filters }) {
 
         <Reveal>
           <div className="flex justify-center gap-4 mb-12">
-            {activeFilters.map((f) => (
+            {filtros.map((f) => (
               <button
                 key={f.label}
                 onClick={() => setFilter(f)}
                 className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filter.label === f.label
+                  filter === f
                     ? 'bg-gradient-to-r from-yellow-600 to-gold text-dark'
                     : 'glass text-gray-300 hover:text-white hover:border-white/20'
                 }`}

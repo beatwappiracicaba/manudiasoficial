@@ -5,19 +5,11 @@ import Particles from '../Particles/Particles'
 import StageLights from '../StageLights/StageLights'
 import HERO_IMG from '../../assets/img/FOTO1.jpeg'
 
-export default function Hero({ title, subtitle, description, buttons }) {
+export default function Hero() {
   const ref = useRef(null)
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 800], [0, -150])
   const opacity = useTransform(scrollY, [0, 600], [1, 0])
-
-  const displayTitle = title || 'Manu Dias'
-  const displaySubtitle = subtitle || 'Cantora & Compositora'
-  const displayDescription = description || 'Uma voz que emociona e contagia.'
-  const displayButtons = buttons || [
-    { text: 'Contratar Show', link: 'https://wa.me/', variant: 'primary' },
-    { text: 'Seguir no Instagram', link: 'https://instagram.com/', variant: 'secondary' },
-  ]
 
   return (
     <section id="home" ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -52,7 +44,7 @@ export default function Hero({ title, subtitle, description, buttons }) {
           >
             <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
             <span className="text-sm font-medium text-gold tracking-wider uppercase">
-              {displayTitle}
+              A Princesinha do Modão
             </span>
           </motion.div>
 
@@ -62,19 +54,7 @@ export default function Hero({ title, subtitle, description, buttons }) {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-6xl sm:text-7xl md:text-8xl font-extrabold mb-6 leading-tight"
           >
-            {displayTitle.split(' ').map((word, i) => {
-              const gold = word.toLowerCase() === 'dias'
-              return (
-                <span key={i}>
-                  {i > 0 && ' '}
-                  {gold ? (
-                    <span className="text-gold-gradient">{word}</span>
-                  ) : (
-                    word
-                  )}
-                </span>
-              )
-            })}
+            Manu <span className="text-gold-gradient">Dias</span>
           </motion.h1>
 
           <motion.p
@@ -83,7 +63,7 @@ export default function Hero({ title, subtitle, description, buttons }) {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-xl sm:text-2xl text-gray-300 font-light mb-4"
           >
-            {displaySubtitle}
+            A emoção do sertanejo em cada apresentação.
           </motion.p>
 
           <motion.p
@@ -92,7 +72,7 @@ export default function Hero({ title, subtitle, description, buttons }) {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="text-base sm:text-lg text-gray-400 mb-10 leading-relaxed"
           >
-            {displayDescription}
+            Conheça a trajetória, agenda de shows e acompanhe todos os lançamentos.
           </motion.p>
 
           <motion.div
@@ -101,23 +81,28 @@ export default function Hero({ title, subtitle, description, buttons }) {
             transition={{ duration: 0.8, delay: 0.9 }}
             className="flex flex-wrap gap-4"
           >
-            {displayButtons.map((btn, idx) => (
-              <motion.a
-                key={btn.id || idx}
-                href={btn.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`px-8 py-4 rounded-full font-bold text-lg shadow-2xl transition-all flex items-center gap-2 ${
-                  btn.variant === 'primary'
-                    ? 'bg-gradient-to-r from-yellow-600 to-gold text-dark shadow-gold/30'
-                    : 'glass font-bold text-lg hover:bg-white/10'
-                }`}
-              >
-                {btn.text}
-              </motion.a>
-            ))}
+            <motion.a
+              href="https://api.whatsapp.com/message/ECULPKJI3KMFF1?autoload=1&app_absent=0&utm_source=ig"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 rounded-full bg-gradient-to-r from-yellow-600 to-gold text-dark font-bold text-lg shadow-2xl shadow-gold/30 transition-all flex items-center gap-2"
+            >
+              <FaWhatsapp />
+              Contratar Show
+            </motion.a>
+            <motion.a
+              href="https://www.instagram.com/manudiasoficial1/"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 rounded-full glass font-bold text-lg hover:bg-white/10 transition-all flex items-center gap-2"
+            >
+              <FaInstagram />
+              Instagram
+            </motion.a>
           </motion.div>
         </div>
       </motion.div>

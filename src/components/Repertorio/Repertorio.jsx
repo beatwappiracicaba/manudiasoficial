@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Reveal from '../Reveal/Reveal'
 import { FaTimes } from 'react-icons/fa'
 
-const defaultCategories = [
+const categorias = [
   {
     titulo: 'Modão',
     descricao: 'Os maiores sucessos do sertanejo raiz e universidade.',
@@ -26,9 +26,8 @@ const defaultCategories = [
   },
 ]
 
-export default function Repertorio({ categories }) {
+export default function Repertorio() {
   const [active, setActive] = useState(null)
-  const data = categories && categories.length > 0 ? categories : defaultCategories
 
   return (
     <section id="repertorio" className="py-24 relative">
@@ -46,17 +45,17 @@ export default function Repertorio({ categories }) {
         </Reveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {data.map((cat, index) => (
-            <Reveal key={cat.name || cat.id || index} delay={index * 0.1}>
+          {categorias.map((cat, index) => (
+            <Reveal key={cat.titulo} delay={index * 0.1}>
               <motion.div
                 whileHover={{ y: -8, scale: 1.02 }}
                 onClick={() => setActive(cat)}
                 className="glass-card p-6 cursor-pointer group"
               >
                 <h3 className="text-2xl font-bold mb-3 text-gold group-hover:text-white transition-colors">
-                  {cat.name || cat.titulo}
+                  {cat.titulo}
                 </h3>
-                <p className="text-gray-400 text-sm mb-4">{cat.descricao || ''}</p>
+                <p className="text-gray-400 text-sm mb-4">{cat.descricao}</p>
                 <span className="text-gold text-sm font-medium">Ver repertório &rarr;</span>
               </motion.div>
             </Reveal>
@@ -86,9 +85,9 @@ export default function Repertorio({ categories }) {
                 >
                   <FaTimes size={20} />
                 </button>
-                <h3 className="text-2xl font-bold mb-4 text-gold">{active.name || active.titulo}</h3>
+                <h3 className="text-2xl font-bold mb-4 text-gold">{active.titulo}</h3>
                 <ul className="space-y-2 text-gray-300">
-                  {(active.songs || []).map((musica) => (
+                  {active.musicas.map((musica) => (
                     <li key={musica} className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-gold" />
                       {musica}

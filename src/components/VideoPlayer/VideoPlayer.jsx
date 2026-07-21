@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import Reveal from '../Reveal/Reveal'
 
-export default function VideoPlayer({ title }) {
+export default function VideoPlayer() {
   return (
     <section id="video" className="py-24 relative">
       <div className="absolute inset-0 bg-dark" />
@@ -11,7 +11,7 @@ export default function VideoPlayer({ title }) {
         <Reveal>
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              <span className="text-gold-gradient">{title || 'Vídeo'}</span> de Apresentação
+              <span className="text-gold-gradient">Vídeo</span> de Apresentação
             </h2>
             <div className="w-24 h-1 gold-gradient mx-auto rounded-full" />
           </div>

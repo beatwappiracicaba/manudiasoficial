@@ -1,6 +1,6 @@
 import Reveal from '../Reveal/Reveal'
 
-export default function Playlist({ title, description }) {
+export default function Playlist() {
   return (
     <section id="playlist" className="py-24 relative">
       <div className="absolute inset-0 bg-dark" />
@@ -20,9 +20,9 @@ export default function Playlist({ title, description }) {
           <div className="w-32 h-32 rounded-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center mb-6 shadow-2xl shadow-green-500/20">
             <span className="text-5xl">🎵</span>
           </div>
-          <h3 className="text-2xl font-bold mb-2">{title || 'As melhores do modão'}</h3>
+          <h3 className="text-2xl font-bold mb-2">As melhores do modão</h3>
           <p className="text-gray-400 mb-6 max-w-md">
-            {description || 'Clássicos e lançamentos reunidos em uma seleção especial para você curtir a qualquer momento.'}
+            Clássicos e lançamentos reunidos em uma seleção especial para você curtir a qualquer momento.
           </p>
           <div className="glass px-6 py-3 rounded-full inline-flex items-center gap-2 text-sm text-gold border-gold/20">
             <span className="relative flex h-3 w-3">

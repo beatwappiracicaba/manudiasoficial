@@ -1,6 +1,6 @@
 import Reveal from '../Reveal/Reveal'
 
-const defaultItems = [
+const items = [
   { year: '2018', title: 'Primeiros Passos', description: 'Início da trajetória musical em Piracicaba.' },
   { year: '2019', title: 'Primeiro show', description: 'Apresentação marcante que conquistou o público local.' },
   { year: '2020', title: 'Reconhecimento', description: 'Prêmios e reconhecimento regional.' },
@@ -8,9 +8,7 @@ const defaultItems = [
   { year: '2024', title: 'Nacional', description: 'Expansão da carreira para novas cidades e estados.' },
 ]
 
-export default function Timeline({ items }) {
-  const data = items && items.length > 0 ? items : defaultItems
-
+export default function Timeline() {
   return (
     <section id="timeline" className="py-24 relative">
       <div className="absolute inset-0 bg-dark" />
@@ -30,8 +28,8 @@ export default function Timeline({ items }) {
           <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-gold/30 to-transparent" />
 
           <div className="space-y-16">
-            {data.map((item, index) => (
-              <Reveal key={item.year || item.id || index} direction={index % 2 === 0 ? 'left' : 'right'}>
+            {items.map((item, index) => (
+              <Reveal key={item.year} direction={index % 2 === 0 ? 'left' : 'right'}>
                 <div className={`flex items-center gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                   <div className={`flex-1 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
                     <div className="glass-card p-6 inline-block">

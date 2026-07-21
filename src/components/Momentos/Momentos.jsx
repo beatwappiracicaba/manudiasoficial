@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import Reveal from '../Reveal/Reveal'
 import FOTO4 from '../../assets/img/FOTO4.jpeg'
 
-const defaultMoments = [
+const momentos = [
   {
     image: FOTO4,
     title: 'O Início',
@@ -20,9 +20,7 @@ const defaultMoments = [
   },
 ]
 
-export default function Momentos({ stories }) {
-  const items = stories && stories.length > 0 ? stories : defaultMoments
-
+export default function Momentos() {
   return (
     <section id="momentos" className="py-24 relative">
       <div className="absolute inset-0 bg-dark" />
@@ -39,8 +37,8 @@ export default function Momentos({ stories }) {
         </Reveal>
 
         <div className="space-y-24">
-          {items.map((momento, index) => (
-            <Reveal key={momento.title || index} delay={index * 0.2}>
+          {momentos.map((momento, index) => (
+            <Reveal key={momento.title} delay={index * 0.2}>
               <div className={`grid md:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'md:grid-flow-dense' : ''}`}>
                 <motion.div
                   initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -49,7 +47,7 @@ export default function Momentos({ stories }) {
                   transition={{ duration: 0.8 }}
                   className={`relative rounded-3xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 ${index % 2 === 1 ? 'md:col-start-2' : ''}`}
                 >
-                  <img src={momento.image || FOTO4} alt={momento.title || 'Momento'} loading="lazy" className="w-full h-[400px] object-cover" />
+                  <img src={momento.image} alt={momento.title} loading="lazy" className="w-full h-[400px] object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />
                 </motion.div>
 

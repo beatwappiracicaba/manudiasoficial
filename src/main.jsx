@@ -22,7 +22,7 @@ export function initLenis() {
       gestureDirection: 'vertical',
       smooth: true,
       smoothTouch: false,
-      touchMultiplier: 1.5,
+      touchMultiplier: 2,
     })
 
     function raf(time) {

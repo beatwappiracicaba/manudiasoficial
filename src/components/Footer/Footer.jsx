@@ -11,11 +11,8 @@ const quickLinks = [
   { href: '#contato', label: 'Contato' },
 ]
 
-export default function Footer({ artistName, slogan, socials }) {
+export default function Footer() {
   const currentYear = new Date().getFullYear()
-  const displayName = artistName || 'Manu Dias'
-  const displaySlogan = slogan || 'A Princesinha do Modão'
-  const igUser = socials?.instagram ? socials.instagram.replace(/https?:\/\/(www\.)?instagram\.com\//, '').replace('/', '') : 'manudiasoficial1'
 
   return (
     <footer className="relative border-t border-white/10 bg-dark">
@@ -23,22 +20,10 @@ export default function Footer({ artistName, slogan, socials }) {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="lg:col-span-2">
             <h3 className="text-3xl font-bold mb-2">
-              {displayName.split(' ').map((word, i) => {
-                const gold = word.toLowerCase() === 'dias'
-                return (
-                  <span key={i}>
-                    {i > 0 && ' '}
-                    {gold ? (
-                      <span className="text-gold">{word}</span>
-                    ) : (
-                      word
-                    )}
-                  </span>
-                )
-              })}
+              Manu <span className="text-gold">Dias</span>
             </h3>
             <p className="text-gold text-sm tracking-widest uppercase mb-6">
-              {displaySlogan}
+              A Princesinha do Modão
             </p>
             <p className="text-gray-400 leading-relaxed max-w-md">
               Conhecida por levar a emoção do sertanejo a cada apresentação.
@@ -67,19 +52,19 @@ export default function Footer({ artistName, slogan, socials }) {
             <h4 className="text-lg font-bold mb-6 text-white">Redes sociais</h4>
             <div className="space-y-4">
               <a
-                href={`https://www.instagram.com/${igUser}`}
+                href="https://www.instagram.com/manudiasoficial1/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-gray-400 hover:text-gold transition-colors duration-200 group"
+                className="flex items-center gap-3 text-gray-400 hover:text-gold transition-colors duration-300 group"
               >
                 <FaInstagram size={20} className="group-hover:scale-110 transition-transform" />
-                <span>@{igUser}</span>
+                <span>@manudiasoficial1</span>
               </a>
               <a
-                href={`https://api.whatsapp.com/message/${socials?.whatsapp || ''}`}
+                href="https://api.whatsapp.com/message/ECULPKJI3KMFF1?autoload=1&app_absent=0&utm_source=ig"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-gray-400 hover:text-gold transition-colors duration-200 group"
+                className="flex items-center gap-3 text-gray-400 hover:text-gold transition-colors duration-300 group"
               >
                 <FaWhatsapp size={20} className="group-hover:scale-110 transition-transform" />
                 <span>WhatsApp</span>
@@ -90,10 +75,10 @@ export default function Footer({ artistName, slogan, socials }) {
 
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm flex items-center gap-1">
-            Feito com <FaHeart className="text-gold text-xs" /> para {displayName}
+            Feito com <FaHeart className="text-gold text-xs" /> para Manu Dias
           </p>
           <p className="text-gray-500 text-sm">
-            {' '}{currentYear} {displayName}. Todos os direitos reservados.
+            © {currentYear} Manu Dias. Todos os direitos reservados.
           </p>
         </div>
       </div>

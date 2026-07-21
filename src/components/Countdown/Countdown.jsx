@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
 import Reveal from '../Reveal/Reveal'
 
-export default function Countdown({ targetDate }) {
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft(targetDate))
+const targetDate = new Date('2025-12-31T23:59:59')
+
+export default function Countdown() {
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft())
   const [eventPassed, setEventPassed] = useState(false)
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const left = getTimeLeft(targetDate)
+      const left = getTimeLeft()
       setTimeLeft(left)
       if (left.total <= 0) {
         setEventPassed(true)
@@ -15,7 +17,7 @@ export default function Countdown({ targetDate }) {
       }
     }, 1000)
     return () => clearInterval(timer)
-  }, [targetDate])
+  }, [])
 
   return (
     <section id="countdown" className="py-24 relative">
@@ -63,9 +65,9 @@ export default function Countdown({ targetDate }) {
   )
 }
 
-function getTimeLeft(target) {
+function getTimeLeft() {
   const now = new Date()
-  const diff = new Date(target || '2025-12-31T23:59:59') - now
+  const diff = targetDate - now
 
   if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0, total: 0 }
 

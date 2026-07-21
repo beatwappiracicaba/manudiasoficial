@@ -1,10 +1,7 @@
 import { motion } from 'framer-motion'
 import Reveal from '../Reveal/Reveal'
 
-export default function Citacao({ quote, author }) {
-  const displayQuote = quote || 'A música transforma momentos em lembranças inesquecíveis.'
-  const displayAuthor = author || 'Manu Dias'
-
+export default function Citacao() {
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark-card to-dark" />
@@ -22,17 +19,9 @@ export default function Citacao({ quote, author }) {
             &ldquo;
           </motion.div>
           <blockquote className="text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight mb-8">
-            {displayQuote.split(' ').map((word, i, arr) => {
-              const lower = word.toLowerCase().replace(/[^a-záàâãéèêíïóôõöúüç]/g, '')
-              const isGold = lower === 'inesquecíveis' || lower === 'inesqueciveis' || lower === 'inesquecivel' || lower === 'inesquecível'
-              return (
-                <span key={i}>
-                  {i > 0 && ' '}{isGold ? <span className="text-gold-gradient font-bold">{word}</span> : word}
-                </span>
-              )
-            })}
+            A música transforma momentos em <span className="text-gold-gradient font-bold">lembranças inesquecíveis</span>.
           </blockquote>
-          <cite className="text-gold text-lg font-medium tracking-widest uppercase">{displayAuthor}</cite>
+          <cite className="text-gold text-lg font-medium tracking-widest uppercase">Manu Dias</cite>
         </div>
       </Reveal>
     </section>

@@ -17,9 +17,9 @@ export default function LoadingScreen() {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
-      className="fixed inset-0 z-[300] flex items-center justify-center bg-dark px-6"
+      className="fixed inset-0 z-[300] flex items-center justify-center bg-dark"
     >
-      <div className="relative w-14 h-14 sm:w-16 sm:h-16">
+      <div className="relative w-12 h-12">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
@@ -28,7 +28,7 @@ export default function LoadingScreen() {
         <motion.img
           src={LOGO}
           alt="Logo"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover"
+          className="absolute inset-0 m-auto w-6 h-6 rounded-full object-cover"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.3 }}
