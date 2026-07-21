@@ -26,7 +26,7 @@ export default function Sobre() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative overflow-hidden"
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10">
               <img src={SOBRE_IMG} alt="Manu Dias" loading="lazy" className="w-full h-auto object-cover" />

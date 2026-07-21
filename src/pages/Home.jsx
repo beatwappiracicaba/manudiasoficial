@@ -21,7 +21,7 @@ import Footer from '../components/Footer/Footer'
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-dark relative">
+    <div className="min-h-screen bg-dark relative overflow-x-hidden">
       <div className="relative z-10">
         <Navbar />
         <main>

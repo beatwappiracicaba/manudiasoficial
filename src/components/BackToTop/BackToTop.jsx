@@ -12,7 +12,7 @@ export default function BackToTop() {
   return (
     <motion.button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-dark-card/80 backdrop-blur-xl border border-white/10 text-gold flex items-center justify-center shadow-lg hover:shadow-gold/20"
+      className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-50 w-12 h-12 rounded-full bg-dark-card/80 backdrop-blur-xl border border-white/10 text-gold flex items-center justify-center shadow-lg hover:shadow-gold/20"
       style={{ scale }}
       whileHover={{ scale: 1.1, y: -3 }}
       whileTap={{ scale: 0.95 }}

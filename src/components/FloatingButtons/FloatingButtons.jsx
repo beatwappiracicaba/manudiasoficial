@@ -18,7 +18,7 @@ const items = [
 
 export default function FloatingButtons() {
   return (
-    <div className="fixed bottom-8 right-8 z-50 flex flex-col gap-4">
+    <div className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-50 flex flex-col gap-4">
       {items.map((item, index) => (
         <motion.a
           key={item.label}
