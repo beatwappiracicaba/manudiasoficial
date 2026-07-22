@@ -8,7 +8,7 @@ const momentos = [
   {
     image: FOTO1,
     title: 'O Início',
-    text: 'Desde pequena, Manu já mostrava seu talento natural para a música, encantando familiares e amigos nas apresentações escolares.',
+    text: 'A paixão pela música começou ainda na infância, cantando na igreja e encantando todos com sua voz. Com o incentivo e apoio dos pais, Manu decidiu seguir o sonho de construir uma carreira na música. Hoje, conta com o acompanhamento de um professor de canto, uma assessora e um produtor musical, dedicando-se diariamente para levar o melhor do sertanejo ao seu público.',
   },
   {
     image: FOTO2,
