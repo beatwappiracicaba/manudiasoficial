@@ -15,7 +15,7 @@ const momentos = [
   {
     video: PRIMEIRA_VEZ,
     title: 'A Primeira Vez no Palco',
-    text: 'A emoção da primeira apresentação profissional marcou o início de uma trajetória de dedicação e amor pela arte.',
+    text: 'Em outubro de 2024, Manu deu seu primeiro passo nos palcos em uma participação especial em um evento, realizando sua primeira apresentação profissional no formato voz e violão. Foi um momento marcante que deu início � sua trajetória art�stica e fortaleceu ainda mais o sonho de seguir carreira na música.',
     type: 'video'
   },
   {
