@@ -3,22 +3,26 @@ import Reveal from '../Reveal/Reveal'
 import FOTO1 from '../../assets/img/FOTO1.jpeg'
 import FOTO2 from '../../assets/img/FOTO2.jpeg'
 import FOTO3 from '../../assets/img/FOTO3.jpeg'
+import PRIMEIRA_VEZ from '../../assets/videos/primeiravez.mp4'
 
 const momentos = [
   {
     image: FOTO1,
     title: 'O Início',
     text: 'A paixão pela música começou ainda na infância, cantando na igreja e encantando todos com sua voz. Com o incentivo e apoio dos pais, Manu decidiu seguir o sonho de construir uma carreira na música. Hoje, conta com o acompanhamento de um professor de canto, uma assessora e um produtor musical, dedicando-se diariamente para levar o melhor do sertanejo ao seu público.',
+    type: 'image'
   },
   {
-    image: FOTO2,
+    video: PRIMEIRA_VEZ,
     title: 'A Primeira Vez no Palco',
     text: 'A emoção da primeira apresentação profissional marcou o início de uma trajetória de dedicação e amor pela arte.',
+    type: 'video'
   },
   {
     image: FOTO3,
     title: 'A Princesinha do Modão',
     text: 'Carisma, voz marcante e muito sentimento conquistaram o público e consolidaram o título de A Princesinha do Modão.',
+    type: 'image'
   },
 ]
 
@@ -49,7 +53,18 @@ export default function Momentos() {
                   transition={{ duration: 0.8 }}
                   className={`relative rounded-3xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 ${index % 2 === 1 ? 'md:col-start-2' : ''}`}
                 >
-                  <img src={momento.image} alt={momento.title} loading="lazy" className="w-full h-auto object-top" />
+                  {momento.type === 'video' ? (
+                    <video
+                      src={momento.video}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-auto object-top"
+                    />
+                  ) : (
+                    <img src={momento.image} alt={momento.title} loading="lazy" className="w-full h-auto object-top" />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />
                 </motion.div>
 
