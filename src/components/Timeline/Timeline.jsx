@@ -1,14 +1,22 @@
-import Reveal from '../Reveal/Reveal'
-
-const items = [
-  { year: '2018', title: 'Primeiros Passos', description: 'InÃ­cio da trajetÃ³ria musical em Piracicaba.' },
-  { year: '2019', title: 'Primeiro show', description: 'ApresentaÃ§Ã£o marcante que conquistou o pÃºblico local.' },
-  { year: '2020', title: 'Reconhecimento', description: 'PrÃªmios e reconhecimento regional.' },
-  { year: '2022', title: 'A Princesinha do ModÃ£o', description: 'TÃ­tulo consolidado e agenda crescente.' },
-  { year: '2024', title: 'Nacional', description: 'ExpansÃ£o da carreira para novas cidades e estados.' },
-]
+import { useState, useEffect } from "react";
+import Reveal from "../Reveal/Reveal";
 
 export default function Timeline() {
+  const [items, setItems] = useState(() => {
+    const saved = localStorage.getItem("timelineItems");
+    return saved ? JSON.parse(saved) : [
+      { year: "2018", title: "Primeiros Passos", description: "Início da trajetória musical em Piracicaba." },
+      { year: "2019", title: "Primeiro show", description: "Apresentação marcante que conquistou o público local." },
+      { year: "2020", title: "Reconhecimento", description: "Prêmios e reconhecimento regional." },
+      { year: "2022", title: "A Princesinha do Modão", description: "Título consolidado e agenda crescente." },
+      { year: "2024", title: "Nacional", description: "Expansão da carreira para novas cidades e estados." },
+    ];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("timelineItems", JSON.stringify(items));
+  }, [items]);
+
   return (
     <section id="timeline" className="py-24 relative">
       <div className="absolute inset-0 bg-dark" />
@@ -18,7 +26,7 @@ export default function Timeline() {
         <Reveal>
           <div className="text-center mb-20">
             <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              <span className="text-gold-gradient">TrajetÃ³ria</span>
+              <span className="text-gold-gradient">Trajetória</span>
             </h2>
             <div className="w-24 h-1 gold-gradient mx-auto rounded-full" />
           </div>
@@ -29,9 +37,9 @@ export default function Timeline() {
 
           <div className="space-y-16">
             {items.map((item, index) => (
-              <Reveal key={item.year} direction={index % 2 === 0 ? 'left' : 'right'}>
-                <div className={`flex items-center gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                  <div className={`flex-1 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
+              <Reveal key={item.year} direction={index % 2 === 0 ? "left" : "right"}>
+                <div className={`flex items-center gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
+                  <div className={`flex-1 ${index % 2 === 0 ? "text-right" : "text-left"}`}>
                     <div className="glass-card p-6 inline-block">
                       <span className="text-gold font-bold text-xl">{item.year}</span>
                       <h3 className="text-xl font-bold mt-2 mb-2">{item.title}</h3>
@@ -47,5 +55,5 @@ export default function Timeline() {
         </div>
       </div>
     </section>
-  )
+  );
 }

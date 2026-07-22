@@ -1,23 +1,23 @@
-import { motion } from 'framer-motion'
-import Navbar from '../components/Navbar/Navbar'
-import Hero from '../components/Hero/Hero'
-import Sobre from '../components/Sobre/Sobre'
-import Agenda from '../components/Agenda/Agenda'
-import Momentos from '../components/Momentos/Momentos'
-import Citacao from '../components/Citacao/Citacao'
-import Galeria from '../components/Galeria/Galeria'
-import Timeline from '../components/Timeline/Timeline'
-import Estatisticas from '../components/Estatisticas/Estatisticas'
-import Musicas from '../components/Musicas/Musicas'
-import Playlist from '../components/Playlist/Playlist'
-import VideoPlayer from '../components/VideoPlayer/VideoPlayer'
-import Repertorio from '../components/Repertorio/Repertorio'
-import Contratacoes from '../components/Contratacoes/Contratacoes'
-import FAQ from '../components/FAQ/FAQ'
-import MensagemArtista from '../components/MensagemArtista/MensagemArtista'
-import Countdown from '../components/Countdown/Countdown'
-import Contato from '../components/Contato/Contato'
-import Footer from '../components/Footer/Footer'
+import { motion } from "framer-motion";
+import Navbar from "../components/Navbar/Navbar";
+import Hero from "../components/Hero/Hero";
+import Sobre from "../components/Sobre/Sobre";
+import Agenda from "../components/Agenda/Agenda";
+import Momentos from "../components/Momentos/Momentos";
+import Citacao from "../components/Citacao/Citacao";
+import Galeria from "../components/Galeria/Galeria";
+import Timeline from "../components/Timeline/Timeline";
+import Estatisticas from "../components/Estatisticas/Estatisticas";
+import Musicas from "../components/Musicas/Musicas";
+import Playlist from "../components/Playlist/Playlist";
+import VideoPlayer from "../components/VideoPlayer/VideoPlayer";
+import Repertorio from "../components/Repertorio/Repertorio";
+import Contratacoes from "../components/Contratacoes/Contratacoes";
+import FAQ from "../components/FAQ/FAQ";
+import MensagemArtista from "../components/MensagemArtista/MensagemArtista";
+import Countdown from "../components/Countdown/Countdown";
+import Contato from "../components/Contato/Contato";
+import Footer from "../components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -32,6 +32,7 @@ export default function Home() {
           <Citacao />
           <Galeria />
           <Timeline />
+          
           <Estatisticas />
           <Musicas />
           <Playlist />
@@ -46,5 +47,5 @@ export default function Home() {
         </main>
       </div>
     </div>
-  )
+  );
 }
