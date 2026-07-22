@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { FaPlus, FaChartBar, FaUsers, FaCamera, FaEdit, FaTimes, FaImage, FaClipboardList, FaCloudUploadAlt, FaRedo } from 'react-icons/fa'
+import { FaPlus, FaChartBar, FaUsers, FaCamera, FaEdit, FaTimes, FaImage, FaClipboardList, FaCloudUploadAlt, FaRedo, FaBars } from 'react-icons/fa'
 
 // Image upload modal component
 const ImageUploadModal = ({ onClose, onImageAdded }) => {
@@ -115,6 +115,12 @@ const ImageUploadModal = ({ onClose, onImageAdded }) => {
             </label>
             <div className="mt-1 space-y-2">
               <label className="flex items-center space-x-3 cursor-pointer">
+                <hassistant
+Let me complete the response.
+
+
+Now I'm now.
+I'll justifiesubinput>
                 <input
                   type="radio"
                   name="category"
@@ -166,6 +172,7 @@ const ImageUploadModal = ({ onClose, onImageAdded }) => {
 export default function Dashboard() {
   const navigate = useNavigate()
   const [showUploadModal, setShowUploadModal] = useState(false)
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [images, setImages] = useState(() => {
     const saved = localStorage.getItem('galleryImages')
     return saved ? JSON.parse(saved) : []
@@ -186,12 +193,63 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-dark">
-      {/* Header */}
+      {/* Header with Hamburger Menu */}
       <header className="border-b border-gray-800 pb-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gold">Painel de Controle</h1>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+          <div className="flex items-center space-x-3">
+            <button
+              onClick={() => setShowMobileMenu(!showMobileMenu)}
+              className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-700/50"
+            >
+              <FaBars />
+            </button>
+            <h1 className="text-3xl font-bold text-gold">Painel de Controle</h1>
+          </div>
           <p className="text-gray-400 mt-2">Gerencie o conteúdo da sua galeria</p>
         </div>
+        
+        {/* Mobile Menu */}
+        {showMobileMenu && (
+          <div className="fixed inset-0 z-[50] bg-black/50 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-dark/90 backdrop-blur-xl rounded-2xl p-6 w-full max-w-md space-y-4">
+              <h3 className="text-lg font-bold text-gold text-center">Menu</h3>
+              <div className="space-y-2">
+                <button
+                  onClick={() => {
+                    setShowMobileMenu(false)
+                    // In a real app, this would navigate to different sections
+                    alert("Navigation to Gallery Section")
+                  }}
+                  className="w-full text-left px-4 py-3 bg-gray-800/50 rounded-lg hover:bg-gray-700 text-white flex items-center space-x-3"
+                >
+                  <FaImage className="text-gold-400" />
+                  <span>Galeria</span>
+                </button>
+                <button
+                  onClick={() => setShowMobileMenu(false)}
+                  className="w-full text-left px-4 py-3 bg-gray-800/50 rounded-lg hover:bg-gray-700 text-white flex items-center space-x-3"
+                >
+                  <FaPlus className="text-gold-400" />
+                  <span>Adicionar Foto</span>
+                </button>
+                <button
+                  onClick={() => setShowMobileMenu(false)}
+                  className="w-full text-left px-4 py-3 bg-gray-800/50 rounded-lg hover:bg-gray-700 text-white flex items-center space-x-3"
+                >
+                  <FaChartBar className="text-gold-400" />
+                  <span>Estatísticas</span>
+                </button>
+              </div>
+              <button
+                onClick={() => setShowMobileMenu(false)}
+                className="w-full text-center px-4 py-3 bg-gray-800/50 rounded-lg hover:bg-gray-700 text-white"
+              >
+                <FaTimes className="text-red-400 mr-2" />
+                Fechar Menu
+              </div>
+            </div>
+          )}
+        )}
       </header>
 
       {/* Main Content */}

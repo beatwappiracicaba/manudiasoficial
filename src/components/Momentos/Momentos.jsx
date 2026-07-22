@@ -8,20 +8,20 @@ import PRIMEIRA_VEZ from '../../assets/videos/primeiravez.mp4'
 const momentos = [
   {
     image: FOTO1,
-    title: 'O InÃ­cio',
-    text: 'A paixÃ£o pela mÃºsica comeÃ§ou ainda na infÃ¢ncia, cantando na igreja e encantando todos com sua voz. Com o incentivo e apoio dos pais, Manu decidiu seguir o sonho de construir uma carreira na mÃºsica. Hoje, conta com o acompanhamento de um professor de canto, uma assessora e um produtor musical, dedicando-se diariamente para levar o melhor do sertanejo ao seu pÃºblico.',
+    title: 'O Início',
+    text: 'A paixão pela música começou ainda na infância, cantando na igreja e encantando todos com sua voz. Com o incentivo e apoio dos pais, Manu decidiu seguir o sonho de construir uma carreira na música. Hoje, conta com o acompanhamento de um professor de canto, uma assessora e um produtor musical, dedicando-se diariamente para levar o melhor do sertanejo ao seu público.',
     type: 'image'
   },
   {
     video: PRIMEIRA_VEZ,
     title: 'A Primeira Vez no Palco',
-    text: 'Em outubro de 2024, Manu deu seu primeiro passo nos palcos em uma participaÃ§Ã£o especial em um evento, realizando sua primeira apresentaÃ§Ã£o profissional no formato voz e violÃ£o. Foi um momento marcante que deu inÃ­cio Ã  sua trajetÃ³ria artÃ­stica e fortaleceu ainda mais o sonho de seguir carreira na mÃºsica.',
+    text: 'Em outubro de 2024, Manu deu seu primeiro passo nos palcos em uma participação especial em um evento, realizando sua primeira apresentação profissional no formato voz e violão. Foi um momento marcante que deu início à sua trajetória artística e fortaleceu ainda mais o sonho de seguir carreira na música.',
     type: 'video'
   },
   {
     image: FOTO3,
-    title: 'A Princesinha do ModÃ£o',
-    text: 'Carisma, voz marcante e muito sentimento conquistaram o pÃºblico e consolidaram o tÃ­tulo de A Princesinha do ModÃ£o.',
+    title: 'A Princesinha do Modão',
+    text: 'Carisma, voz marcante e muito sentimento conquistaram o público e consolidaram o título de A Princesinha do Modão.',
     type: 'image'
   },
 ]
@@ -36,7 +36,7 @@ export default function Momentos() {
         <Reveal>
           <div className="text-center mb-20">
             <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              <span className="text-gold-gradient">Momentos</span> InesquecÃ­veis
+              <span className="text-gold-gradient">Momentos</span> Inesquecíveis
             </h2>
             <div className="w-24 h-1 gold-gradient mx-auto rounded-full" />
           </div>
