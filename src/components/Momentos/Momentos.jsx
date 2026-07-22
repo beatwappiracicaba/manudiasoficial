@@ -1,20 +1,22 @@
 import { motion } from 'framer-motion'
 import Reveal from '../Reveal/Reveal'
-import FOTO4 from '../../assets/img/FOTO4.jpeg'
+import FOTO1 from '../../assets/img/FOTO1.jpeg'
+import FOTO2 from '../../assets/img/FOTO2.jpeg'
+import FOTO3 from '../../assets/img/FOTO3.jpeg'
 
 const momentos = [
   {
-    image: FOTO4,
+    image: FOTO1,
     title: 'O Início',
     text: 'Desde pequena, Manu já mostrava seu talento natural para a música, encantando familiares e amigos nas apresentações escolares.',
   },
   {
-    image: FOTO4,
+    image: FOTO2,
     title: 'A Primeira Vez no Palco',
     text: 'A emoção da primeira apresentação profissional marcou o início de uma trajetória de dedicação e amor pela arte.',
   },
   {
-    image: FOTO4,
+    image: FOTO3,
     title: 'A Princesinha do Modão',
     text: 'Carisma, voz marcante e muito sentimento conquistaram o público e consolidaram o título de A Princesinha do Modão.',
   },
@@ -47,7 +49,7 @@ export default function Momentos() {
                   transition={{ duration: 0.8 }}
                   className={`relative rounded-3xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 ${index % 2 === 1 ? 'md:col-start-2' : ''}`}
                 >
-                  <img src={momento.image} alt={momento.title} loading="lazy" className="w-full h-[400px] object-cover" />
+                  <img src={momento.image} alt={momento.title} loading="lazy" className="w-full h-[400px] object-top" />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />
                 </motion.div>
 
