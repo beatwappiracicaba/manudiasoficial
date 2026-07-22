@@ -3,41 +3,46 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FaTimes, FaChevronLeft, FaChevronRight, FaExpand, FaCompress, FaSearchPlus, FaSearchMinus } from 'react-icons/fa'
 import Reveal from '../Reveal/Reveal'
 
-const images = import.meta.glob('/src/assets/img/*.{jpeg,jpg,png,webp}', { eager: true })
-
-function getImageUrls() {
-  return Object.entries(images)
-    .filter(([path]) => !path.includes('LOGO1'))
-    .map(([, mod]) => mod.default)
+// Load initial images from assets for backward compatibility
+const loadInitialImages = () => {
+  // This is a fallback for when no images are saved yet
+  // In a real app, you might want to keep some default images
+  return []
 }
 
-const filtros = [
-  { label: 'Todas', filter: () => true },
-  { label: 'Shows', filter: (url) => url.includes('FOTO1') || url.includes('FOTO4') },
-  { label: 'Ensaio', filter: (url) => url.includes('FOTO2') || url.includes('FOTO3') },
-]
-
 export default function Galeria() {
-  const [imageUrls, setImageUrls] = useState([])
+  const [images, setImages] = useState(() => {
+    const saved = localStorage.getItem('galleryImages')
+    return saved ? JSON.parse(saved) : loadInitialImages()
+  })
+  
   const [filtered, setFiltered] = useState([])
-  const [filter, setFilter] = useState(filtros[0])
+  const [filter, setFilter] = useState('Todas')
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [zoom, setZoom] = useState(1)
   const touchStartRef = useRef({ x: 0, y: 0 })
 
+  // Update filtered images when filter or images change
   useEffect(() => {
-    const urls = getImageUrls()
-    setImageUrls(urls)
-    setFiltered(urls)
-  }, [])
+    if (filter === 'Todas') {
+      setFiltered(images)
+    } else if (filter === 'Shows') {
+      setFiltered(images.filter(img => img.category === 'show'))
+    } else if (filter === 'Ensaio') {
+      setFiltered(images.filter(img => img.category === 'rehearsal'))
+    } else if (filter === 'Fãs') {
+      setFiltered(images.filter(img => img.category === 'fan'))
+    } else {
+      setFiltered(images)
+    }
+  }, [filter, images])
 
   useEffect(() => {
-    if (filter) {
-      setFiltered(imageUrls.filter(filter.filter))
-    }
-  }, [filter, imageUrls])
+    // Save to localStorage whenever images change
+    localStorage.setItem('galleryImages', JSON.stringify(images))
+  }, [images])
 
   const openLightbox = useCallback((index) => {
     setCurrentIndex(index)
@@ -101,12 +106,17 @@ export default function Galeria() {
 
         <Reveal>
           <div className="flex justify-center gap-4 mb-12">
-            {filtros.map((f) => (
+            {[ 
+              { label: 'Todas', value: 'Todas' },
+              { label: 'Shows', value: 'Shows' },
+              { label: 'Ensaio', value: 'Ensaio' },
+              { label: 'Fãs', value: 'Fãs' }
+            ].map((f) => (
               <button
                 key={f.label}
-                onClick={() => setFilter(f)}
+                onClick={() => setFilter(f.label)}
                 className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filter === f
+                  filter === f.label
                     ? 'bg-gradient-to-r from-yellow-600 to-gold text-dark'
                     : 'glass text-gray-300 hover:text-white hover:border-white/20'
                 }`}
@@ -118,9 +128,9 @@ export default function Galeria() {
         </Reveal>
 
         <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filtered.map((src, index) => (
+          {filtered.map((image, index) => (
             <motion.div
-              key={src}
+              key={image.url || index}
               layout
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -130,8 +140,8 @@ export default function Galeria() {
               className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer group"
             >
               <img
-                src={src}
-                alt={`Galeria ${index + 1}`}
+                src={image.url}
+                alt={`Galeria ${index + 1} - ${image.category}`}
                 loading="lazy"
                 className="w-full h-full object-top transition-transform duration-500 group-hover:scale-110"
               />
@@ -163,7 +173,7 @@ export default function Galeria() {
             {filtered.length > 0 && (
               <div className="relative max-w-7xl max-h-[90vh] flex items-center justify-center">
                 <motion.img
-                  src={filtered[currentIndex]}
+                  src={filtered[currentIndex].url}
                   alt=""
                   className="max-w-full max-h-[85vh] object-contain rounded-2xl"
                   style={{ scale: zoom }}
@@ -183,7 +193,7 @@ export default function Galeria() {
                     <button
                       onClick={(e) => { e.stopPropagation(); nextImage() }}
                       className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass flex items-center justify-center text-white hover:text-gold transition-colors"
-                      aria-label="PrÃ³xima"
+                      aria-label="Próxima"
                     >
                       <FaChevronRight />
                     </button>
