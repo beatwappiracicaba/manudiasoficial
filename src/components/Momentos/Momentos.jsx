@@ -49,7 +49,7 @@ export default function Momentos() {
                   transition={{ duration: 0.8 }}
                   className={`relative rounded-3xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 ${index % 2 === 1 ? 'md:col-start-2' : ''}`}
                 >
-                  <img src={momento.image} alt={momento.title} loading="lazy" className="w-full h-[400px] object-top" />
+                  <img src={momento.image} alt={momento.title} loading="lazy" className="w-full h-auto object-top" />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />
                 </motion.div>
 

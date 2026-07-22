@@ -63,7 +63,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-xl sm:text-2xl text-gray-300 font-light mb-4"
           >
-            A emoÃ§Ã£o do sertanejo em cada apresentaÃ§Ã£o.
+            O Início
           </motion.p>
 
           <motion.p
@@ -72,7 +72,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="text-base sm:text-lg text-gray-400 mb-10 leading-relaxed"
           >
-            ConheÃ§a a trajetÃ³ria, agenda de shows e acompanhe todos os lanÃ§amentos.
+            A paixão pela música começou ainda na infância, cantando na igreja e encantando todos com sua voz. Com o incentivo e apoio dos pais, Manu decidiu seguir o sonho de construir uma carreira na música. Hoje, conta com o acompanhamento de um professor de canto, uma assessora e um produtor musical, dedicando-se diariamente para levar o melhor do sertanejo ao seu público.
           </motion.p>
 
           <motion.div
