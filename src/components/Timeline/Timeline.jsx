@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Reveal from "../Reveal/Reveal";
 
 export default function Timeline() {
@@ -38,7 +37,7 @@ export default function Timeline() {
           <div className="space-y-16">
             {items.map((item, index) => (
               <Reveal key={item.year} direction={index % 2 === 0 ? "left" : "right"}>
-                <div className={`flex items-center gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
+                <div className={`flex items-center gap-8 ${index % 2 === 0 ? "md-flex-row" : "md-flex-row-reverse"}>
                   <div className={`flex-1 ${index % 2 === 0 ? "text-right" : "text-left"}`}>
                     <div className="glass-card p-6 inline-block">
                       <span className="text-gold font-bold text-xl">{item.year}</span>

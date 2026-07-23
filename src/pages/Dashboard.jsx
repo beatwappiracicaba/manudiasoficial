@@ -391,47 +391,45 @@ export default function Dashboard() {
             <div className="bg-dark/90 backdrop-blur-xl rounded-2xl p-6 w-full max-w-md space-y-4">
               <h3 className="text-lg font-bold text-gold text-center">Menu</h3>
               <div className="space-y-2">
+                {/* Trajetória button */}
                 <button
                   onClick={() => {
                     setShowMobileMenu(false);
-                    setShowTimelineModal(true); // Open timeline modal
+                    setShowTimelineModal(true);
                   }}
                   className="w-full text-left px-4 py-3 bg-gray-800/50 rounded-lg hover:bg-gray-700 text-white flex items-center space-x-3"
                 >
                   <FaCalendarAlt />
                   <span>Trajetória</span>
                 </button>
+                {/* Adicionar Foto button */}
                 <button
                   onClick={() => {
                     setShowMobileMenu(false);
-                    setShowUploadModal(true); // Open photo upload modal
+                    setShowUploadModal(true);
                   }}
                   className="w-full text-left px-4 py-3 bg-gray-800/50 rounded-lg hover:bg-gray-700 text-white flex items-center space-x-3"
                 >
                   <FaPlus />
                   <span>Adicionar Foto</span>
                 </button>
+                {/* Estatísticas button */}
                 <button
                   onClick={() => {
                     setShowMobileMenu(false);
-                    // In a real app, this would navigate to stats section
-                    alert("Visualizar Estatísticas")
+                    // Placeholder for stats navigation
+                    alert("Visualizar Estatísticas");
                   }}
                   className="w-full text-left px-4 py-3 bg-gray-800/50 rounded-lg hover:bg-gray-700 text-white flex items-center space-x-3"
                 >
                   <FaChartBar />
                   <span>Estatísticas</span>
                 </button>
+</div>
+                <button onClick={() => setShowMobileMenu(false)} className="w-full text-center px-4 py-3 bg-gray-800/50 rounded-lg hover:bg-gray-700 text-white"><FaTimes className="text-red-400 mr-2" />Fechar Menu</button>
+                <button onClick={() => setShowMobileMenu(false)} className="w-full text-center px-4 py-3 bg-gray-800/50 rounded-lg hover:bg-gray-700 text-white"><FaTimes className="text-red-400 mr-2" />Fechar Menu</button>
               </div>
-              <button
-                onClick={() => setShowMobileMenu(false)}
-                className="w-full text-center px-4 py-3 bg-gray-800/50 rounded-lg hover:bg-gray-700 text-white"
-              >
-                <FaTimes className="text-red-400 mr-2" />
-                Fechar Menu
-              </div>
-            </div>
-          )}
+          </div>
         )}
       </header>
 
@@ -502,7 +500,9 @@ export default function Dashboard() {
                       {image.category === "show" && "Show"}
                       {image.category === "fan" && "Fã"}
                       {image.category === "rehearsal" && "Ensaio"}
-                    </div>
+<button onClick={() => setShowMobileMenu(false)} className="w-full text-center px-4 py-3 bg-gray-800/50 rounded-lg hover:bg-gray-700 text-white"><FaTimes className="text-red-400 mr-2" />Fechar Menu</button>
+               </div>
+               <button onClick={() => setShowMobileMenu(false)} className="w-full text-center px-4 py-3 bg-gray-800/50 rounded-lg hover:bg-gray-700 text-white"><FaTimes className="text-red-400 mr-2" />Fechar Menu</button>
                   </div>
                 ))}
             </div>
